@@ -1,0 +1,5 @@
+# Persistencia e arquivos gerados pelo LocalStack
+/volume/
+/glue_jobs/drivers/*.jar
+__pycache__/
+*.py[cod]

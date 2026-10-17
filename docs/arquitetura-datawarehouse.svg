@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitetura do Data Warehouse Netflix</title>
+  <desc id="desc">Fluxo de ingestão do Kaggle para S3 e PostgreSQL, transformação dimensional com Glue e consumo em ferramentas de BI.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#47766b"/>
+    </marker>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#dfe7e1" stroke-width="1"/>
+    </pattern>
+    <style>
+      text { font-family: "Aptos", "Segoe UI", sans-serif; fill: #18342e; }
+      .eyebrow { font-size: 15px; font-weight: 700; letter-spacing: 1.8px; fill: #47766b; }
+      .title { font-size: 39px; font-weight: 750; }
+      .subtitle { font-size: 18px; fill: #60766f; }
+      .phase { font-size: 15px; font-weight: 750; letter-spacing: 1.3px; fill: #47766b; }
+      .section-line { stroke: #c9d6ce; stroke-width: 1.5; }
+      .panel { fill: #fbfdfb; stroke: #b6c9be; stroke-width: 2; }
+      .panel-label { font-size: 14px; font-weight: 750; letter-spacing: 1.4px; fill: #42695f; }
+      .card { fill: #ffffff; stroke: #d3dfd8; stroke-width: 1.5; }
+      .card-title { font-size: 21px; font-weight: 730; }
+      .card-copy { font-size: 15px; fill: #60766f; }
+      .small { font-size: 13px; fill: #60766f; }
+      .label { font-size: 12px; font-weight: 750; letter-spacing: .7px; }
+      .flow { fill: none; stroke: #47766b; stroke-width: 2.5; marker-end: url(#arrow); }
+      .flow-dashed { fill: none; stroke: #78968b; stroke-width: 2; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1680" height="1080" fill="#f2f6f2"/>
+  <rect width="1680" height="1080" fill="url(#grid)" opacity=".46"/>
+  <rect x="0" y="0" width="1680" height="160" fill="#f8faf8"/>
+  <path d="M0 159H1680" stroke="#d8e2db" stroke-width="2"/>
+
+  <text x="64" y="53" class="eyebrow">DATA PLATFORM  /  LOCAL DEVELOPMENT</text>
+  <text x="64" y="105" class="title">Netflix Data Warehouse</text>
+  <text x="66" y="137" class="subtitle">Ingestão em lote, modelo dimensional e camada pronta para análise</text>
+  <rect x="1390" y="49" width="222" height="38" rx="19" fill="#e2efe8"/>
+  <circle cx="1413" cy="68" r="5" fill="#328566"/>
+  <text x="1428" y="73" class="label" fill="#28654f">AMBIENTE LOCAL · PRO</text>
+
+  <text x="64" y="204" class="phase">01  /  INGESTÃO E CAMADA OPERACIONAL</text>
+  <path d="M460 199H1615" class="section-line"/>
+
+  <rect x="340" y="225" width="1280" height="350" rx="18" class="panel"/>
+  <rect x="365" y="207" width="196" height="34" rx="17" fill="#e2efe8"/>
+  <text x="383" y="229" class="panel-label">LOCALSTACK PRO</text>
+
+  <rect x="60" y="296" width="250" height="188" rx="16" class="card"/>
+  <rect x="60" y="296" width="7" height="188" rx="3.5" fill="#e49a43"/>
+  <circle cx="103" cy="341" r="21" fill="#fff0dc"/>
+  <text x="103" y="347" text-anchor="middle" font-size="17" font-weight="800" fill="#a65b19">K</text>
+  <text x="137" y="338" class="label" fill="#a65b19">FONTE PÚBLICA</text>
+  <text x="88" y="390" class="card-title">Kaggle</text>
+  <text x="88" y="419" class="card-copy">Netflix Movies and Series</text>
+  <text x="88" y="451" class="small">debayank2024</text>
+
+  <rect x="382" y="280" width="278" height="206" rx="15" class="card"/>
+  <rect x="382" y="280" width="278" height="8" rx="4" fill="#319273"/>
+  <rect x="404" y="306" width="35" height="35" rx="10" fill="#e2f1e9"/>
+  <path d="M414 324h15M421.5 316.5v15" stroke="#287659" stroke-width="2.3" stroke-linecap="round"/>
+  <text x="451" y="329" class="label" fill="#287659">GLUE JOB 01</text>
+  <text x="406" y="375" class="card-title">etl-netflix</text>
+  <text x="406" y="406" class="card-copy">KaggleHub · boto3 · PySpark</text>
+  <path d="M406 427H636" stroke="#e4ebe6"/>
+  <text x="406" y="453" class="small">Baixa, publica CSV, transforma</text>
+  <text x="406" y="473" class="small">e carrega o PostgreSQL</text>
+
+  <rect x="786" y="270" width="278" height="226" rx="15" class="card"/>
+  <rect x="786" y="270" width="278" height="8" rx="4" fill="#3c91a0"/>
+  <circle cx="817" cy="313" r="15" fill="#e2f2f4"/>
+  <path d="M808 310c0-3 18-3 18 0v8c0 3-18 3-18 0zM808 310v-5c0-3 18-3 18 0v5M808 318v5c0 3 18 3 18 0v-5" fill="none" stroke="#277682" stroke-width="1.6"/>
+  <text x="844" y="318" class="label" fill="#277682">S3 · DW-DATALAKE</text>
+  <rect x="808" y="344" width="234" height="57" rx="10" fill="#f4f8f5"/>
+  <rect x="808" y="344" width="4" height="57" rx="2" fill="#e49a43"/>
+  <text x="826" y="369" class="label" fill="#a65b19">RAW  /  CSV</text>
+  <text x="826" y="389" class="small">netflix-movies-and-series/</text>
+  <rect x="808" y="415" width="234" height="57" rx="10" fill="#f1f7f8"/>
+  <rect x="808" y="415" width="4" height="57" rx="2" fill="#3c91a0"/>
+  <text x="826" y="440" class="label" fill="#277682">REFINED  /  PARQUET</text>
+  <text x="826" y="460" class="small">netflix_titles/</text>
+
+  <rect x="1185" y="280" width="390" height="206" rx="15" class="card"/>
+  <rect x="1185" y="280" width="390" height="8" rx="4" fill="#d66a58"/>
+  <circle cx="1220" cy="321" r="15" fill="#fbe9e5"/>
+  <ellipse cx="1220" cy="316" rx="7" ry="3" fill="none" stroke="#b94e40" stroke-width="1.6"/>
+  <path d="M1213 316v10c0 4 14 4 14 0v-10M1213 321c0 4 14 4 14 0" fill="none" stroke="#b94e40" stroke-width="1.6"/>
+  <text x="1247" y="326" class="label" fill="#a8473c">RDS POSTGRESQL</text>
+  <text x="1210" y="373" class="card-title">db_dadosbruto</text>
+  <rect x="1210" y="393" width="340" height="61" rx="10" fill="#fbf3f1"/>
+  <text x="1228" y="419" class="label" fill="#a8473c">SCHEMA PUBLIC</text>
+  <text x="1228" y="442" class="card-copy">netflix_titles</text>
+
+  <path d="M310 390H382" class="flow"/>
+  <text x="346" y="374" text-anchor="middle" class="small">download</text>
+
+  <path d="M660 350H786" class="flow"/>
+  <rect x="671" y="321" width="104" height="23" rx="11" fill="#f2f6f2"/>
+  <text x="723" y="337" text-anchor="middle" class="small">upload CSV</text>
+  <path d="M786 433H660" class="flow"/>
+  <rect x="672" y="441" width="104" height="22" rx="11" fill="#f2f6f2"/>
+  <text x="724" y="456" text-anchor="middle" class="small">leitura Spark</text>
+
+  <path d="M610 486C650 548 1110 548 1214 486" class="flow-dashed"/>
+  <rect x="839" y="525" width="178" height="23" rx="11" fill="#fbfdfb"/>
+  <text x="928" y="541" text-anchor="middle" class="small">JDBC · netflix_titles</text>
+
+  <text x="64" y="633" class="phase">02  /  MODELO DIMENSIONAL E CONSUMO</text>
+  <path d="M497 628H1615" class="section-line"/>
+
+  <rect x="60" y="659" width="1260" height="324" rx="18" class="panel"/>
+  <rect x="84" y="641" width="196" height="34" rx="17" fill="#e2efe8"/>
+  <text x="102" y="663" class="panel-label">LOCALSTACK PRO</text>
+
+  <rect x="94" y="730" width="290" height="178" rx="15" class="card"/>
+  <rect x="94" y="730" width="7" height="178" rx="3.5" fill="#d66a58"/>
+  <text x="121" y="770" class="label" fill="#a8473c">LEITURA JDBC</text>
+  <text x="121" y="808" class="card-title">Tabela de origem</text>
+  <text x="121" y="839" class="card-copy">public.netflix_titles</text>
+  <text x="121" y="875" class="small">Uma linha por título</text>
+
+  <rect x="492" y="730" width="300" height="178" rx="15" class="card"/>
+  <rect x="492" y="730" width="300" height="8" rx="4" fill="#319273"/>
+  <rect x="516" y="754" width="35" height="35" rx="10" fill="#e2f1e9"/>
+  <path d="M526 772h15M533.5 764.5v15" stroke="#287659" stroke-width="2.3" stroke-linecap="round"/>
+  <text x="563" y="777" class="label" fill="#287659">GLUE JOB 02</text>
+  <text x="516" y="825" class="card-title">etl-netflix-dw</text>
+  <text x="516" y="854" class="card-copy">PySpark · dimensionalização</text>
+  <text x="516" y="883" class="small">Gera dimensões, fato e bridges</text>
+
+  <rect x="896" y="710" width="365" height="220" rx="15" class="card"/>
+  <rect x="896" y="710" width="365" height="8" rx="4" fill="#d66a58"/>
+  <text x="922" y="752" class="label" fill="#a8473c">SCHEMA DE ANÁLISE</text>
+  <text x="922" y="790" class="card-title">dw_netflix</text>
+  <path d="M922 809H1235" stroke="#e4ebe6"/>
+  <text x="922" y="840" class="small">fato_titulo</text>
+  <text x="1075" y="840" class="small">dimensões</text>
+  <text x="922" y="873" class="small">país · diretor · ator · categoria</text>
+  <rect x="922" y="889" width="291" height="24" rx="12" fill="#fbf3f1"/>
+  <text x="1067" y="906" text-anchor="middle" class="label" fill="#a8473c">TABELAS PONTE PARA LISTAS</text>
+
+  <path d="M384 819H492" class="flow"/>
+  <text x="438" y="801" text-anchor="middle" class="small">JDBC</text>
+  <path d="M792 819H896" class="flow"/>
+  <text x="844" y="801" text-anchor="middle" class="small">grava</text>
+
+  <rect x="1360" y="746" width="260" height="160" rx="16" fill="#183d36"/>
+  <text x="1386" y="782" class="label" fill="#a9d4bd">CONSUMO ANALÍTICO</text>
+  <text x="1386" y="824" font-size="22" font-weight="720" fill="#ffffff">Dashboards</text>
+  <rect x="1386" y="844" width="90" height="30" rx="15" fill="#2e6958"/>
+  <text x="1431" y="864" text-anchor="middle" class="small" fill="#ffffff">Power BI</text>
+  <rect x="1485" y="844" width="112" height="30" rx="15" fill="#2e6958"/>
+  <text x="1541" y="864" text-anchor="middle" class="small" fill="#ffffff">QuickSight</text>
+  <path d="M1261 819H1360" class="flow"/>
+  <text x="1310" y="801" text-anchor="middle" class="small">consulta</text>
+
+  <text x="64" y="1034" class="small">S3 · Glue/Spark · RDS PostgreSQL</text>
+  <text x="1615" y="1034" text-anchor="end" class="small">Pipeline em lote  /  Netflix</text>
+</svg>
