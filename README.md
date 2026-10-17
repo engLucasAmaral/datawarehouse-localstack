@@ -130,4 +130,4 @@ SELECT COUNT(*) FROM dw_netflix.fato_titulo;
 ## Dashboards
 
 É possível conectar ferramentas como Power BI, AWS QuickSight e outras soluções de BI às tabelas do PostgreSQL para gerar dashboards e análises dos dados.
->>>>>>> develop
+
